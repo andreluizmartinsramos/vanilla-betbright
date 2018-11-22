@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     outline: 0;
+    box-sizing: border-box;
 }
 
 .main {
@@ -9,29 +10,41 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100%;
   font-family: sans-serif;
   font-size: 14.5px;
+  min-width: 260px;
+  padding: 10px;
 }
 
 .ads__container {
   background: #fff;
-  width: 680px;
-  max-width: 680px;
-  height: 215px;
   margin: 5px;
   display: flex;
   flex-direction: row;  
   -webkit-box-shadow: 0px 0px 9px -1px rgba(0,0,0,0.28);
   -moz-box-shadow: 0px 0px 9px -1px rgba(0,0,0,0.28);
   box-shadow: 0px 0px 9px -1px rgba(0,0,0,0.28);  
-  position: relative;
   overflow: hidden;
+  flex-wrap: wrap;
+  width: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;  
+  height: 223px;
+}
+
+.main:hover .ads {
+    transform: rotateY(180deg);
+}
+
+.ads__container img:hover {
+    transition: filter 0.5s;
+    filter:brightness(120%);
 }
 
 .ads__content {
     padding: 20px;
     width: 100%;
+    flex: 1;
 }
 
 .ads__content h1 {
@@ -71,12 +84,31 @@
     letter-spacing: -0.5px;   
 }
 
+.ads__back h2 {
+    font-size: 20px;
+    margin: 7px 0 7px 0;
+}
+
+.ads__back .ads__content-back {
+    display: block;
+    overflow: auto;
+    height: 110px;
+}
+
+.ads__back .ads__content-back p {
+    position: relative;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    line-height: 20px;    
+}
+
 .ads__nav {
     display: flex;
     flex-direction: row-reverse;
     margin-top: 15px;
+    justify-content: flex-end;
 }
-button {
+.ads__nav button {
     flex: 1;
     padding: 8px 0;
     background: #E6E7E9;
@@ -86,10 +118,107 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+.ads__nav button:hover {
+    background: #ccc;
+    font-weight: bold;
+}
+
+.ads__nav .btn-find {
+    margin: 0 10px;
+}
+
+.ads__nav .btn-join:hover,
+.ads__nav .btn-join {
     background: #FBBF0F;
 }
 
-.btn-find {
-    margin: 0 10px;
+.ads__back .btn-join {
+    margin-left: 10px;
+}
+
+@media (min-width: 300px) 
+{
+    .ads__nav .swipe-icon:hover {
+        background-image: url("icon-swipe.png");
+        background-repeat: no-repeat;
+        background-position-y: 50%;
+        background-position-x: 10%;
+    }
+}
+
+@media (max-width: 690px) 
+{
+    .ads__content {
+        font-size: 13px;
+    }    
+}
+
+@media (max-width: 600px) 
+{
+    .ads__container {
+        flex-direction: column;
+        height: 470px;
+    }    
+    .ads__content {
+        padding: 10px;
+        font-size: 12px;
+        max-height: none;  
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;              
+    }   
+
+    .ads__content .ads__nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        
+    }
+
+    .ads__back .ads__content-back {
+        height: 300px;
+    }    
+
+    .btn-join {
+        min-width: 100%; 
+        margin-bottom: 10px; 
+    }
+    .btn-find {
+        flex:0;
+        margin-left: 0px !important;
+    }
+    .mask-text {
+        bottom: 100px !important;
+    }    
+}
+
+.ads {
+    position: relative;
+    width: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    max-height: 300px;
+}
+
+.ads__back {
+    position: absolute;
+    z-index: 2;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+}
+
+.ads__front {
+    position: absolute;
+    z-index: 1;
+    backface-visibility: hidden;
+}
+
+.mask-text {
+    display: block;
+    position: absolute;
+    background-image: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1));
+    height: 40px;
+    width: 100%;
+    opacity: 1;
+    bottom: 50px;
 }
