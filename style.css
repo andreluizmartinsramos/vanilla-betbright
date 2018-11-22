@@ -222,3 +222,19 @@
     opacity: 1;
     bottom: 50px;
 }
+
+.ads__content-back::-webkit-scrollbar {
+    width: 5px;
+}
+
+.ads__content-back::-webkit-scrollbar-track {
+    border-radius: 10px;
+    width: 1px;
+    border: 0;
+    
+}
+
+.ads__content-back::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+}
