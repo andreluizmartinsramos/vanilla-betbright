@@ -45,11 +45,17 @@
                 </div>
                 <div class="ads__nav">
                     <button class="btn-join">JOIN NOW</button>
-                    <button class="btn-tscs swipe-icon">BACK</button>
+                    <button class="btn-tscs-back swipe-icon">BACK</button>
                 </div>                
             </div>
         </div>
       </div>
     </div>
   </body>
+  <script>
+  
+  //Rotate Effect on click
+  document.querySelector(".btn-tscs").addEventListener('click', () => document.querySelector(".ads").style.transform = "rotateY(180deg)");
+  document.querySelector(".btn-tscs-back").addEventListener('click', () => document.querySelector(".ads").style.transform = "rotateY(0deg)");
+  </script>
 </html>
